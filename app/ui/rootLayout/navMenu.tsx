@@ -66,6 +66,10 @@ const gallery = {
   title: "Gallery",
   items: [
     {
+      name: "Activities & Events",
+      href: "#",
+    },
+    {
       name: "Hostel",
       href: "#",
     },
@@ -75,10 +79,6 @@ const gallery = {
     },
     {
       name: "Laboratory",
-      href: "#",
-    },
-    {
-      name: "Faculty Members",
       href: "#",
     },
   ],

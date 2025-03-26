@@ -4,7 +4,11 @@ import { lilita } from "../fonts";
 
 interface HeaderProps {
   universityName: string;
-  contactInfo: string;
+  contactInfo: {
+    address: string;
+    number: string;
+    email: string;
+  };
 }
 
 const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
@@ -22,7 +26,9 @@ const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
 
         {/* Contact Info - Hidden on small screens */}
         <div className="hidden md:block text-sm text-gray-600">
-          {contactInfo}
+          <div>{contactInfo.address}</div>
+          <div>{contactInfo.email}</div>
+          <div className="">Phone:&nbsp;{contactInfo.number}</div>
         </div>
       </div>
     </header>

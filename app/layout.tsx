@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/ui/rootLayout/header";
-import logo from "@/public/next.svg";
 import NavMenu from "@/ui/rootLayout/navMenu";
 import { Footer } from "@/ui/rootLayout/footer";
 
@@ -14,8 +13,11 @@ export const metadata: Metadata = {
 
 const HeaderProps = {
   universityName: "AV School Of Nursing",
-  logoSrc: logo,
-  contactInfo: "Contact Details",
+  contactInfo: {
+    address: "Mahavir Nagar, Kokar, Ranchi, Jharkhand 834001",
+    number: "08210692090",
+    email: "example@avsn.com",
+  },
 };
 
 export default async function RootLayout({
