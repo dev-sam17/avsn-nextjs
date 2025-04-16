@@ -9,6 +9,7 @@ export const MiniMap = () => {
         allowFullScreen={true}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+        className=" rounded-sm"
       ></iframe>
     </div>
   );
