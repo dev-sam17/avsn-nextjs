@@ -15,7 +15,7 @@ const HeaderProps = {
   universityName: "AV School Of Nursing",
   contactInfo: {
     address: "Mahavir Nagar, Kokar, Ranchi, Jharkhand 834001",
-    number: "08210692090",
+    number: "8210692090",
     email: "example@avsn.com",
   },
 };
@@ -37,7 +37,7 @@ export default async function RootLayout({
   }
   return (
     <html lang="en">
-      <body className="">
+      <body className="bg-teal-50">
         <Header {...HeaderProps} />
         <NavMenu />
 

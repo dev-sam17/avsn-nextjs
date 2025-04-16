@@ -2,76 +2,52 @@
 
 export default function Page() {
   return (
-    <div className="container mx-auto">
-      <div className="text-center text-4xl font-bold text-primary p-4">
-        Our Mission
+    <section className="max-w-6xl mx-auto px-4 py-12 bg-teal-50">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-teal-700">Our Mission</h1>
+        <p className="mt-2 text-lg text-gray-600">
+          Shaping the Future of Healthcare, One Student at a Time
+        </p>
       </div>
-      <div className="flex flex-col lg:flex-row">
-        <div className="lg:w-1/2 p-4">
-          <div className="rounded w-100 h-100 border"></div>
-          {/* <Image
-            src="https://source.unsplash.com/random"
-            alt="Principal"
-            className="w-full h-full object-cover"
-          /> */}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-teal-600 mb-2">
+            Educate with Excellence
+          </h3>
+          <p className="text-gray-700">
+            Deliver comprehensive and value-based nursing education using
+            innovative and practical learning approaches.
+          </p>
         </div>
-        <div className="lg:w-1/2 p-4">
-          <p>
-            At AV Nursing School, our mission is to provide exceptional nursing
-            education that empowers students to become skilled, compassionate,
-            and dedicated healthcare professionals. We are committed to shaping
-            the future of nursing through a comprehensive curriculum, hands-on
-            clinical experiences, and a supportive learning environment that
-            nurtures both personal and professional growth.
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-teal-600 mb-2">
+            Empower Future Nurses
+          </h3>
+          <p className="text-gray-700">
+            Instill leadership, critical thinking, and empathy to empower
+            students to become responsible healthcare providers.
           </p>
-          <br />
-          <p>Our core values drive everything we do:</p>
-          <ul className="list-disc list-inside p-2">
-            <li>
-              <strong> Academic Excellence:</strong> We strive to provide an
-              innovative and evidence-based education, ensuring that our
-              students are well-equipped with the latest knowledge and practices
-              in nursing care.
-            </li>
-            <li>
-              <strong>Compassionate Care: </strong>We believe that empathy and
-              compassion are at the heart of nursing. Our training emphasizes
-              not only the technical skills needed in healthcare but also the
-              emotional intelligence required to care for patients with dignity
-              and respect.
-            </li>
-            <li>
-              <strong>Hands-on Training:</strong> We offer state-of-the-art
-              clinical training and real-world experiences to ensure that our
-              students are fully prepared for the challenges of modern
-              healthcare environments.
-            </li>
-            <li>
-              <strong>Community Impact:</strong> We are dedicated to producing
-              graduates who contribute meaningfully to their communities,
-              promoting health, wellness, and patient-centered care across all
-              healthcare settings.
-            </li>
-            <li>
-              <strong> Ethical Standards:</strong> We uphold the highest ethical
-              standards in both education and patient care, fostering an
-              environment where students learn to make responsible and
-              compassionate decisions in their professional practice.
-            </li>
-          </ul>
-          <br />
-          <p>
-            Through these guiding principles, we aim to shape the next
-            generation of nurses who will lead with integrity, knowledge, and a
-            strong commitment to improving the lives of others.
+        </div>
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-teal-600 mb-2">
+            Promote Ethical Practice
+          </h3>
+          <p className="text-gray-700">
+            Foster a sense of integrity, dedication, and ethics in patient care
+            across all communities.
           </p>
-          <br />
-          <p>
-            Join us at AV Nursing School, where your journey towards becoming a
-            compassionate and skilled nurse begins.
+        </div>
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-teal-600 mb-2">
+            Contribute to Society
+          </h3>
+          <p className="text-gray-700">
+            Encourage community involvement and public health service as a
+            foundation for social responsibility.
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

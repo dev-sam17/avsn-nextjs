@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { MiniMap } from "@/app/ui/rootLayout/miniMap";
+import Link from "next/link";
 
 function Footerdemo() {
   // const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -26,51 +27,51 @@ function Footerdemo() {
   }, [isDarkMode]);
 
   return (
-    <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
-      <div className="container mx-auto bg-zinc-800 text-zinc-400">
+    <footer className=" border-t bg-slate-800 text-foreground transition-colors duration-300">
+      <div className="bg-slate-800 text-slate-100">
         <div className=" grid gap-10 md:grid-cols-2 lg:grid-cols-4 px-4 pt-6 md:px-6 lg:px-8">
           <div className="relative md:ml-5">
-            <h3 className="mb-4 text-lg font-semibold text-white">
+            <h3 className="mb-4 text-lg font-semibold text-slate-100">
               Quick Links
             </h3>
             <nav className="space-y-2 text-sm">
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
+              <Link
+                href="/"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
               >
                 Home
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
+              </Link>
+              <Link
+                href="/about/our-story"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
               >
                 About Us
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
+              </Link>
+              <Link
+                href="/courses/anm"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
               >
-                Services
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
+                Courses
+              </Link>
+              <Link
+                href="/campus/faculty"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
               >
-                Products
-              </a>
-              <a
-                href="#"
-                className="block transition-colors hover:text-primary"
+                Faculty
+              </Link>
+              <Link
+                href="/contact"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
               >
                 Contact
-              </a>
+              </Link>
             </nav>
           </div>
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">
+            <h3 className="mb-4 text-lg font-semibold text-slate-100">
               Contact Us
             </h3>
-            <address className="space-y-2 text-sm not-italic">
+            <address className="space-y-2 text-sm not-italic text-teal-400">
               <p>Mahavir Nagar, Kokar</p>
               <p>Ranchi, Jharkhand 834001</p>
               <p>Phone: 08210692090</p>
@@ -89,10 +90,10 @@ function Footerdemo() {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="rounded-full"
+                      className="rounded-full "
                     >
                       <Facebook className="h-4 w-4" />
-                      <span className="sr-only">Facebook</span>
+                      <span className="sr-only ">Facebook</span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -142,7 +143,7 @@ function Footerdemo() {
                       size="icon"
                       className="rounded-full"
                     >
-                      <Linkedin className="h-4 w-4" />
+                      <Linkedin className="h-4 w-4 " />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </TooltipTrigger>
@@ -154,18 +155,27 @@ function Footerdemo() {
             </div>
           </div>
         </div>
-        <div className="bg-zinc-900 text-zinc-300 mt-12 flex flex-col items-center justify-between gap-4 border-y border-zinc-400 pt-8 text-center md:flex-row px-4 pb-6 md:px-6 lg:px-8">
+        <div className="bg-slate-900 text-slate-300 mt-12 flex flex-col items-center justify-between gap-4 border-y border-slate-600 pt-8 text-center md:flex-row px-4 pb-6 md:px-6 lg:px-8">
           <p className="text-sm text-muted-foreground">
             © 2025 AV School Of Nursing. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
-            <a href="#" className="transition-colors hover:text-primary">
+            <a
+              href="#"
+              className="transition-colors text-slate-300 hover:text-slate-500"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="transition-colors hover:text-primary">
+            <a
+              href="#"
+              className="transition-colors text-slate-300 hover:text-slate-500"
+            >
               Terms of Service
             </a>
-            <a href="#" className="transition-colors hover:text-primary">
+            <a
+              href="#"
+              className="transition-colors text-slate-300 hover:text-slate-500"
+            >
               Cookie Settings
             </a>
           </nav>

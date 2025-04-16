@@ -12,7 +12,7 @@ type TotalCountProps = {
 
 export const TotalCount = (props: TotalCountProps) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-teal-50">
       <div className="flex py-10 justify-around items-center text-center">
         <div>
           <h3 className="mb-2 font-semibold text-2xl text-red-700">

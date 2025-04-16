@@ -6,7 +6,7 @@ function MarqueeEffectDoubleExample() {
       <MarqueeAnimation
         direction="left"
         baseVelocity={-3}
-        className="bg-violet-700 text-white font-light text-base md:text-lg py-2"
+        className="bg-emerald-600 text-white font-light text-base md:text-lg py-2"
       >
         this is a marquee message for some important news or event
         &nbsp;&nbsp;&nbsp;&nbsp;

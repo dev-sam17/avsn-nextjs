@@ -31,11 +31,11 @@ const courses = {
   items: [
     {
       name: "ANM",
-      href: "#",
+      href: "/courses/anm",
     },
     {
       name: "GNM",
-      href: "#",
+      href: "/courses/gnm",
     },
   ],
 };
@@ -45,19 +45,19 @@ const campus = {
   items: [
     {
       name: "Hostel",
-      href: "#",
+      href: "/campus/hostel",
     },
     {
       name: "Library",
-      href: "#",
+      href: "/campus/library",
     },
     {
       name: "Laboratory",
-      href: "#",
+      href: "/campus/laboratory",
     },
     {
       name: "Faculty Members",
-      href: "#",
+      href: "/campus/faculty",
     },
   ],
 };
@@ -89,18 +89,21 @@ const NavMenu: React.FC = () => {
 
   return (
     <>
-      <header className="bg-sky-400 shadow-md sticky top-0 z-10">
+      <header className="bg-teal-700 shadow-md sticky top-0 z-10">
         <div className="container mx-auto">
           {/* Navigation */}
           <nav className=" hidden md:flex space-x-6 items-center justify-center">
-            <Link href="/" className="hover:text-gray-100 p-4">
+            <Link href="/" className="text-white hover:text-teal-100 p-4">
               Home
             </Link>
             <Dropdown {...about} />
             <Dropdown {...courses} />
             <Dropdown {...campus} />
             <Dropdown {...gallery} />
-            <Link href="/contact" className="hover:text-gray-100 p-4">
+            <Link
+              href="/contact"
+              className="text-white hover:text-teal-100 p-4"
+            >
               Contact
             </Link>
           </nav>
@@ -134,16 +137,16 @@ const Dropdown = ({
 }) => {
   return (
     <div className="relative group z-10">
-      <button className="hover:text-gray-100 p-4">
+      <button className="text-white hover:text-teal-100 p-4">
         {title} &nbsp;
         <ChevronDownIcon className="inline" />
       </button>
-      <div className="absolute w-[200px] ml-0 left-0 hidden space-y-2 bg-white shadow-md opacity-0 transition-opacity duration-1000 group-hover:opacity-100 group-hover:block">
+      <div className="absolute w-[200px] ml-0 left-0 hidden space-y-2 bg-slate-50 shadow-md opacity-0 transition-opacity duration-1000 group-hover:opacity-100 group-hover:block">
         {items.map((item) => (
           <Link
             href={item.href}
             key={item.name}
-            className="block px-4 py-2 hover:bg-gray-100"
+            className="block px-4 py-2 hover:bg-teal-100"
           >
             {item.name}
           </Link>
@@ -168,7 +171,7 @@ const SideDrawer = ({
   close: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="md:hidden fixed top-0 container w-[75%] h-full z-40 bg-green-300 p-6 font-medium text-xl">
+    <div className="md:hidden fixed top-0 container w-[75%] h-full z-40 bg-sky-400 p-6 font-medium text-xl">
       <button className="absolute top-5 right-5" onClick={() => close(false)}>
         <Cross1Icon width={25} height={25} />
       </button>

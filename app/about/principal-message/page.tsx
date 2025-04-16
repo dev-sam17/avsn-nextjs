@@ -1,48 +1,39 @@
 export default function Page() {
   return (
-    <div className="container mx-auto">
-      <div className="text-center text-4xl font-bold text-primary p-4">
-        Principal Message
+    <section className="max-w-5xl mx-auto px-4 py-12 bg-teal-50">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-teal-700">
+          Message from the Principal
+        </h1>
       </div>
-      <div className="flex flex-col lg:flex-row">
-        <div className="lg:w-1/2 p-4">
-          <div className="rounded w-100 h-100 border"></div>
 
-          {/* <img
-            src="https://source.unsplash.com/random"
-            alt="Principal"
-            className="w-full h-full object-cover"
-          /> */}
+      <div className="flex flex-col md:flex-row items-center gap-10 mb-12">
+        <div className="w-40 h-40 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center text-gray-500">
+          [Image Placeholder]
         </div>
-        <div className="lg:w-1/2 p-4">
-          <p>
-            &quot;At AV Nursing School, we are committed to shaping the future
-            of healthcare by providing our students with a strong foundation in
-            nursing education, hands-on clinical training, and a compassionate
-            approach to patient care. Our institution fosters an environment
-            where academic excellence meets real-world experience, preparing
-            aspiring nurses to excel in their careers and make a meaningful
-            impact on society.
+        <div>
+          <h2 className="text-2xl font-semibold text-slate-800">
+            Dr. Meena Sharma
+          </h2>
+          <p className="text-sm text-gray-500 mb-4">
+            Principal, AV School Of Nursing
           </p>
-          <br />
-          <p>
-            With a dedicated faculty, state-of-the-art facilities, and a
-            student-centered learning approach, we ensure that every graduate
-            leaves with the knowledge, skills, and confidence to thrive in the
-            ever-evolving healthcare industry. We take pride in nurturing not
-            just skilled professionals but also empathetic caregivers who uphold
-            the highest ethical and medical standards.
+          <p className="text-gray-700 leading-relaxed">
+            Welcome to AV School Of Nursing, where we strive to provide holistic
+            nursing education rooted in compassion, ethics, and scientific
+            excellence. Our aim is to produce competent healthcare professionals
+            who can serve society with skill and empathy. I invite you to be a
+            part of our growing legacy.
           </p>
-          <br />
-          <p>
-            Join us at AV Nursing School and embark on a journey toward a
-            rewarding and fulfilling nursing career.&quot;
-          </p>
-          <br />
-          <p>Principal&quot;s Name</p>
-          <p>Principal, AV Nursing School</p>
         </div>
       </div>
-    </div>
+
+      <div className="bg-teal-100 rounded-lg p-6 text-center">
+        <p className="text-lg text-gray-700 italic">
+          “Education is not just about acquiring knowledge; it&apos;s about
+          building character, developing empathy, and transforming society.”
+        </p>
+      </div>
+    </section>
   );
 }

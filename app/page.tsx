@@ -1,16 +1,9 @@
 import CarouselBody from "./ui/home/carousels";
-import { getCldImageUrl } from "next-cloudinary";
 import { NewsColumn } from "./ui/home/newsColumn";
 import { MapLocation } from "./ui/home/maps";
 import { MarqueeEffectDoubleExample } from "./ui/home/marquee";
 import { TotalCount } from "./ui/home/detailsCount";
-
-const images = ["samples/balloons", "samples/cloudinary-group"];
-const imagesUrl = images.map((id) =>
-  getCldImageUrl({
-    src: id,
-  })
-);
+import { getImagesByFolderName } from "@/lib/api";
 
 const details = {
   openedIn: 2020,
@@ -18,12 +11,19 @@ const details = {
   faculty: 50,
 };
 
-export default function Home() {
+export default async function Home() {
+  let data;
+  try {
+    data = await getImagesByFolderName("home-carousel");
+  } catch (error) {
+    console.log("Error fetching images:", error);
+  }
+
   return (
     <>
-      <CarouselBody images={imagesUrl} />
+      <CarouselBody images={data.images} />
       <MarqueeEffectDoubleExample />
-      <div className="flex flex-col md:flex-row items-center bg-gray-100">
+      <div className="flex flex-col md:flex-row items-center bg-teal-50">
         <NewsColumn />
         <MapLocation />
       </div>

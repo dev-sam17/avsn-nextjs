@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Image from "next/legacy/image";
-
+import type { Image as Img } from "@/lib/api";
 
 interface CarouselProps {
-  images: string[];
+  images: Img[];
   autoPlayInterval?: number;
 }
 
@@ -37,12 +37,12 @@ const CarouselBody: React.FC<CarouselProps> = ({
         className="flex transition-transform duration-500 ease-in-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {images.map((src, index) => (
+        {images.map((image, index) => (
           <div key={index} className="w-full flex-shrink-0 h-full relative">
             {" "}
             {/* Add relative here */}
             <Image
-              src={src}
+              src={image.secure_url}
               alt={`Slide ${index + 1}`}
               layout="fill"
               objectFit="cover" // Use objectFit prop instead of style
