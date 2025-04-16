@@ -171,7 +171,7 @@ const SideDrawer = ({
   close: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <div className="md:hidden fixed top-0 container w-[75%] h-full z-40 bg-sky-400 p-6 font-medium text-xl">
+    <div className="md:hidden fixed top-0 container w-[75%] h-full z-40 bg-teal-700 p-6 font-medium text-xl">
       <button className="absolute top-5 right-5" onClick={() => close(false)}>
         <Cross1Icon width={25} height={25} />
       </button>
