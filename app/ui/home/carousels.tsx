@@ -1,20 +1,36 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Image from "next/legacy/image";
-import type { Image as Img } from "@/lib/api";
+import { getImagesByFolderName } from "@/lib/api";
 
 interface CarouselProps {
-  images: Img[];
   autoPlayInterval?: number;
 }
+type CloudinaryResource = {
+  public_id: string;
+  secure_url: string;
+  format: string;
+  width: number;
+  height: number;
+};
 
-const CarouselBody: React.FC<CarouselProps> = ({
-  images,
-  autoPlayInterval = 3000,
-}) => {
+const CarouselBody: React.FC<CarouselProps> = ({ autoPlayInterval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState<CloudinaryResource[]>([]);
+
+  useEffect(() => {
+    async function get() {
+      try {
+        const res = await getImagesByFolderName("home-carousel");
+        setImages(res.images);
+      } catch (error) {
+        console.log("Error fetching images:", error);
+      }
+    }
+
+    get();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
