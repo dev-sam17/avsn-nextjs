@@ -13,25 +13,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
   return (
-    // <header className="bg-white shadow-md p-4 ">
-    //   <div className="container mx-auto flex items-center justify-around gap-10">
-    //     <div className="flex gap-x-10">
-    //       <div className="rounded-full w-10 h-10 border border-black "></div>
-    //       <span
-    //         className={`text-2xl font-semibold ${lilita.className} antialiased`}
-    //       >
-    //         {universityName}
-    //       </span>
-    //     </div>
-
-    //     {/* Contact Info - Hidden on small screens */}
-    //     <div className="hidden md:block text-sm text-gray-600">
-    //       <div>{contactInfo.address}</div>
-    //       <div>{contactInfo.email}</div>
-    //       <div className="">Phone:&nbsp;{contactInfo.number}</div>
-    //     </div>
-    //   </div>
-    // </header>
     <header className="bg-slate-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
         {/* <!-- Logo + College Name --> */}

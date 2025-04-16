@@ -109,9 +109,13 @@ const NavMenu: React.FC = () => {
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <nav className="md:hidden p-2 flex justify-end text-white">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-xl p-2">
-              <DragHandleHorizontalIcon width={30} height={30} />
+          <nav
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 flex justify-between items-center text-white"
+          >
+            <p className="text-xl">Menu</p>
+            <button className="text-xl">
+              <DragHandleHorizontalIcon width={30} height={40} />
             </button>
           </nav>
         </div>
