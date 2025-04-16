@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import CarouselBody from "./ui/home/carousels";
 import { NewsColumn } from "./ui/home/newsColumn";
 import { MapLocation } from "./ui/home/maps";
@@ -11,13 +13,31 @@ const details = {
   faculty: 50,
 };
 
-export default async function Home() {
-  let data;
-  try {
-    data = await getImagesByFolderName("home-carousel");
-  } catch (error) {
-    console.log("Error fetching images:", error);
-  }
+type CloudinaryResource = {
+  public_id: string;
+  secure_url: string;
+  format: string;
+  width: number;
+  height: number;
+};
+
+export default function Home() {
+  const [data, setData] = useState<{ images: CloudinaryResource[] }>({
+    images: [],
+  });
+
+  useEffect(() => {
+    async function get() {
+      try {
+        const res = await getImagesByFolderName("home-carousel");
+        setData(res);
+      } catch (error) {
+        console.log("Error fetching images:", error);
+      }
+    }
+
+    get();
+  }, []);
 
   return (
     <>

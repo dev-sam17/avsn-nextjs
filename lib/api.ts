@@ -9,17 +9,15 @@ export interface Image {
 
 export async function getImagesByFolderName(folder: string) {
   try {
-    const baseUrl =
-      typeof window === "undefined"
-        ? process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
-        : "";
+    // const baseUrl =
+    //   typeof window === "undefined"
+    //     ? process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
+    //     : "";
 
-    const response = await fetch(`${baseUrl}/dashboard/api/cloudinary?folder=${folder}`, {
+    const response = await fetch(`/dashboard/api/cloudinary?folder=${folder}`, {
       method: "GET",
       cache: "no-store",
     });
-
-    console.log(response)
 
     if (!response.ok) {
       throw new Error("Failed to fetch images");
