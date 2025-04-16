@@ -109,7 +109,7 @@ const NavMenu: React.FC = () => {
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <nav className="md:hidden p-2 flex justify-end">
+          <nav className="md:hidden p-2 flex justify-end text-white">
             <button onClick={() => setIsOpen(!isOpen)} className="text-xl p-2">
               <DragHandleHorizontalIcon width={30} height={30} />
             </button>
@@ -172,30 +172,43 @@ const SideDrawer = ({
 }) => {
   return (
     <div className="md:hidden fixed top-0 container w-[75%] h-full z-40 bg-teal-700 p-6 font-medium text-xl">
-      <button className="absolute top-5 right-5" onClick={() => close(false)}>
+      <button
+        className="absolute top-5 right-5 text-white"
+        onClick={() => close(false)}
+      >
         <Cross1Icon width={25} height={25} />
       </button>
-      <Link href="/" className="block py-2">
+      <Link
+        href="/"
+        onClick={() => close(false)}
+        className="block py-2 text-white"
+      >
         Home
       </Link>
-      <Submenu {...about} />
-      <Submenu {...courses} />
-      <Submenu {...campus} />
-      <Submenu {...gallery} />
-      <Link href="/contact" className="block py-2">
+      <Submenu data={about} close={close} />
+      <Submenu data={courses} close={close} />
+      <Submenu data={campus} close={close} />
+      <Submenu data={gallery} close={close} />
+      <Link
+        href="/contact"
+        onClick={() => close(false)}
+        className="block py-2 text-white"
+      >
         Contact
       </Link>
     </div>
   );
 };
 
-const Submenu = ({
-  title,
-  items,
-}: {
+type SubmenuType = {
   title: string;
   items: { name: string; href: string }[];
-}) => {
+};
+
+const Submenu: React.FC<{
+  data: SubmenuType;
+  close: Dispatch<SetStateAction<boolean>>;
+}> = ({ data, close }) => {
   const [submenuOpen, setSubmenuOpen] = useState<{ [key: string]: boolean }>(
     {}
   );
@@ -207,15 +220,20 @@ const Submenu = ({
     <>
       <button
         onClick={() => toggleSubmenu("more")}
-        className="py-2 w-full text-left"
+        className="py-2 w-full text-left text-white"
       >
-        {title} &nbsp;
+        {data.title} &nbsp;
         <ChevronDownIcon className="inline" />
       </button>
       {submenuOpen["more"] && (
         <div className="pl-4">
-          {items.map((item) => (
-            <Link href={item.href} key={item.name} className="block py-2">
+          {data.items.map((item) => (
+            <Link
+              href={item.href}
+              key={item.name}
+              onClick={() => close(false)}
+              className="block py-2 text-white"
+            >
               {item.name}
             </Link>
           ))}

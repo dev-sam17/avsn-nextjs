@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 interface HeaderProps {
   universityName: string;
   contactInfo: {
@@ -33,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
     <header className="bg-slate-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
         {/* <!-- Logo + College Name --> */}
-        <div className="flex items-center gap-4 mb-4 md:mb-0">
+        <Link href="/" className="flex items-center gap-4 mb-4 md:mb-0">
           <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center text-gray-600">
             [Logo]
           </div>
@@ -45,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
               Approved by INC & State Nursing Council
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* <!-- Contact Details --> */}
         <div className="text-sm text-gray-700 space-y-1">
