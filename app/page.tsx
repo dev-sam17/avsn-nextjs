@@ -3,7 +3,6 @@ import { NewsColumn } from "./ui/home/newsColumn";
 import { MapLocation } from "./ui/home/maps";
 import { MarqueeEffectDoubleExample } from "./ui/home/marquee";
 import { TotalCount } from "./ui/home/detailsCount";
-// import { prisma } from "@/lib/prisma";
 
 const details = {
   openedIn: 2020,

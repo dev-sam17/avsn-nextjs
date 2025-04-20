@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/public/avsn-logo.jpg";
 
 interface HeaderProps {
   universityName: string;
@@ -17,9 +19,7 @@ const Header: React.FC<HeaderProps> = ({ universityName, contactInfo }) => {
       <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between">
         {/* <!-- Logo + College Name --> */}
         <Link href="/" className="flex items-center gap-4 mb-4 md:mb-0">
-          <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center text-gray-600">
-            [Logo]
-          </div>
+          <Image src={Logo} alt="College Logo" width={64} height={64} />
           <div>
             <h1 className="text-2xl font-bold text-teal-700">
               {universityName}
