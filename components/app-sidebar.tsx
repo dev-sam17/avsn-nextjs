@@ -56,9 +56,13 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  className,
+  sidebarTitle = "Admin Portal",
+  ...props
+}: React.ComponentProps<typeof Sidebar> & { sidebarTitle?: string }) {
   return (
-    <Sidebar {...props}>
+    <Sidebar className={className} title={sidebarTitle} {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

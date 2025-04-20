@@ -3,6 +3,7 @@ import { NewsColumn } from "./ui/home/newsColumn";
 import { MapLocation } from "./ui/home/maps";
 import { MarqueeEffectDoubleExample } from "./ui/home/marquee";
 import { TotalCount } from "./ui/home/detailsCount";
+// import { prisma } from "@/lib/prisma";
 
 const details = {
   openedIn: 2020,
@@ -10,7 +11,7 @@ const details = {
   faculty: 50,
 };
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <CarouselBody />
