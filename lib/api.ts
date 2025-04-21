@@ -14,7 +14,7 @@ export async function getImagesByFolderName(folder: string) {
     //     ? process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"
     //     : "";
 
-    const response = await fetch(`/dashboard/api/cloudinary?folder=${folder}`, {
+    const response = await fetch(`/api/cloudinary?folder=${folder}`, {
       method: "GET",
       cache: "no-store",
     });
