@@ -12,6 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { LogoutButton } from "./auth/logout-button";
 
 // Sample data structure for the navigation
 const data = {
@@ -58,7 +59,7 @@ const data = {
 
 export function AppSidebar({
   className,
-  sidebarTitle = "Admin Portal",
+  sidebarTitle = "Images Portal",
   ...props
 }: React.ComponentProps<typeof Sidebar> & { sidebarTitle?: string }) {
   return (
@@ -87,6 +88,7 @@ export function AppSidebar({
         <div className="p-2 text-xs text-muted-foreground">
           <p>© 2025 Your Company</p>
         </div>
+        <LogoutButton />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
