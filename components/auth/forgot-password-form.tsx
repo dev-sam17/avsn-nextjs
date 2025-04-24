@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
 
-import { requestReset } from "@/lib/password";
+import { requestReset } from "@/lib/actions/password";
 import { Button } from "@/components/ui/button";
 import {
   Card,

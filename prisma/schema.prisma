@@ -18,12 +18,12 @@ model Faculty {
   imageUrl      String?
 }
 
-model Notices {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  title   String
-  notice  String
-  date    DateTime @default(now())
-  fileUrl String?
+model Notice {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  fileUrl   String?
 }
 
 model User {

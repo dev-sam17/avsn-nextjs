@@ -50,7 +50,7 @@ export async function register(formData: FormData) {
     await signIn("credentials", {
         email,
         password,
-        redirectTo: "/dashboard",
+        redirectTo: "/admin",
     })
 }
 
@@ -62,7 +62,7 @@ export async function loginAction(formData: FormData) {
         await signIn("credentials", {
             email,
             password,
-            redirectTo: "/dashboard",
+            redirectTo: "/admin",
         })
     } catch (err) {
         if (err instanceof AuthError) {

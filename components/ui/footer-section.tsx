@@ -65,6 +65,12 @@ function Footerdemo() {
               >
                 Contact
               </Link>
+              <Link
+                href="/login"
+                className="block transition-colors text-teal-400 hover:text-teal-200"
+              >
+                Admin
+              </Link>
             </nav>
           </div>
           <div>

@@ -45,13 +45,12 @@ async function main() {
     // Seed Notices
     const notices = Array.from({ length: 10 }, (_, i) => ({
         title: `Notice ${i + 1}`,
-        notice: `This is the content of notice number ${i + 1}.`,
-        date: new Date(Date.now() - i * 86400000), // Subtract i days
+        content: `This is the content of notice number ${i + 1}.`,
     }));
 
     // Insert into DB
     await prisma.faculty.createMany({ data: faculties });
-    await prisma.notices.createMany({ data: notices });
+    await prisma.notice.createMany({ data: notices });
 
     console.log('✅ Seed completed successfully.');
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
 
-import { register } from "@/lib/actions";
+import { register } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,

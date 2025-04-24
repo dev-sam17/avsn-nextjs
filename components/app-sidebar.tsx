@@ -1,5 +1,4 @@
 import type * as React from "react";
-import { FolderKanban } from "lucide-react";
 
 import { NavMain } from "./nav-main";
 import {
@@ -12,7 +11,9 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { LogoutButton } from "./auth/logout-button";
+// import { LogoutButton } from "./auth/logout-button";
+import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 // Sample data structure for the navigation
 const data = {
@@ -62,6 +63,7 @@ export function AppSidebar({
   sidebarTitle = "Images Portal",
   ...props
 }: React.ComponentProps<typeof Sidebar> & { sidebarTitle?: string }) {
+  const router = useRouter();
   return (
     <Sidebar className={className} title={sidebarTitle} {...props}>
       <SidebarHeader>
@@ -69,12 +71,9 @@ export function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <FolderKanban className="size-4" />
-                </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Admin Portal</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-semibold">Image Portal</span>
+                  <span className="">AVSN Image Portal</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -84,11 +83,14 @@ export function AppSidebar({
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>
-        <div className="p-2 text-xs text-muted-foreground">
-          <p>© 2025 Your Company</p>
-        </div>
-        <LogoutButton />
+      <SidebarFooter className="flex justify-center">
+        {/* <LogoutButton /> */}
+        <Button
+          className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-lg "
+          onClick={() => router.push("/admin")}
+        >
+          Back To Portal
+        </Button>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

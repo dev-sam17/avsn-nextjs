@@ -26,9 +26,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const currentPath = (await cookies()).get("currentPath")?.value || "/";
-  const isDashboard = currentPath.startsWith("/dashboard");
+  const isAdmin = currentPath.startsWith("/admin");
 
-  if (isDashboard) {
+  if (isAdmin) {
     return (
       <html lang="en">
         <body>{children}</body>

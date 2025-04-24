@@ -12,13 +12,13 @@ const details = {
 };
 
 export default async function Home() {
-  const res = await prisma.notices.findMany();
+  const notices = await prisma.notice.findMany();
   return (
     <>
       <CarouselBody />
       <MarqueeEffectDoubleExample />
       <div className="flex flex-col md:flex-row items-center bg-teal-50">
-        <NewsColumn notices={res} />
+        <NewsColumn notices={notices} />
         <MapLocation />
       </div>
       {/* <MessageBar /> */}

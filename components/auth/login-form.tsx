@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useFormStatus } from "react-dom";
 
-import { loginAction } from "@/lib/actions";
+import { loginAction } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,

@@ -38,11 +38,10 @@ export async function uploadImageToCloudinary(file: File, folder: string) {
   formData.append('folder', folder);
 
   try {
-    const response = await fetch('/dashboard/api/cloudinary', {
+    const response = await fetch('/api/cloudinary', {
       method: 'POST',
       body: formData,
     });
-
     if (!response.ok) {
       throw new Error('Failed to upload image');
     }
@@ -58,7 +57,7 @@ export async function uploadImageToCloudinary(file: File, folder: string) {
 
 export async function deleteImageFromCloudinary(public_id: string) {
   try {
-    const response = await fetch('/dashboard/api/cloudinary', {
+    const response = await fetch('/api/cloudinary', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
