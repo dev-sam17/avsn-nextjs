@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { DotFilledIcon } from "@radix-ui/react-icons";
-import { Notices } from "@/prisma/generated/client";
+import { DotFilledIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { Notice } from "@/prisma/generated/client";
+import Link from "next/link";
 
-export const NewsColumn = ({ notices }: { notices: Notices[] }) => {
+export const NewsColumn = ({ notices }: { notices: Notice[] }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -52,13 +53,16 @@ export const NewsColumn = ({ notices }: { notices: Notices[] }) => {
           className="h-48 md:h-[13.5rem] lg:h-[20rem] xl:h-[13rem] overflow-y-hidden space-y-1"
         >
           {notices.map((notice) => (
-            <p
+            <Link
               key={notice.id}
-              className="p-1 text-teal-800 hover:text-teal-600  transition cursor-pointer"
+              href={notice.fileUrl ? notice.fileUrl : "javascript:void(0)"}
             >
-              <DotFilledIcon className="inline mr-1" color="black" />
-              {notice.notice}
-            </p>
+              <p className="p-1 text-teal-800 hover:text-teal-600  transition cursor-pointer">
+                <DotFilledIcon className="inline mr-1" color="black" />
+                {notice.content} &nbsp;
+                {notice.fileUrl && <ExternalLinkIcon className="inline mr-1" />}
+              </p>
+            </Link>
           ))}
         </div>
       </div>

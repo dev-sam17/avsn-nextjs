@@ -1,9 +1,7 @@
 import NoticeManagement from "@/components/notice-management";
 import Header from "@/components/header";
-import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
-  const notices = await prisma.notice.findMany();
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       <Header />
@@ -14,7 +12,7 @@ export default async function Home() {
         <p className="text-slate-600 mb-8">
           Manage, organize, and share important notices with your team
         </p>
-        <NoticeManagement notices={notices} />
+        <NoticeManagement />
       </main>
     </div>
   );

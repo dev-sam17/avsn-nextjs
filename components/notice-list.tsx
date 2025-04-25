@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -27,32 +26,45 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
-import { Edit, FileText, MoreVertical, Trash, Calendar } from "lucide-react";
-import { formatDate } from "@/lib/utils";
-import type { Notice } from "@/types/notice";
+import {
+  Edit,
+  FileText,
+  MoreVertical,
+  Trash,
+  Calendar,
+  Loader2,
+} from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import PdfPreview from "./pdf-preview";
+import { Prisma } from "@/lib/prisma";
 
+type Notice = Prisma.Notice;
 interface NoticeListProps {
   notices: Notice[];
   onEdit: (notice: Notice) => void;
   onDelete: (id: string) => void;
+  isLoading: boolean;
 }
 
 export default function NoticeList({
   notices,
   onEdit,
   onDelete,
+  isLoading,
 }: NoticeListProps) {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [previewNotice, setPreviewNotice] = useState<Notice | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = (id: string) => {
     setDeleteId(id);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (deleteId) {
-      onDelete(deleteId);
+      setIsDeleting(true);
+      await onDelete(deleteId);
+      setIsDeleting(false);
       setDeleteId(null);
     }
   };
@@ -61,13 +73,58 @@ export default function NoticeList({
     setDeleteId(null);
   };
 
-  const handlePreview = (notice: Notice) => {
-    setPreviewNotice(notice);
+  // const handlePreview = (notice: Notice) => {
+  //   setPreviewNotice(notice);
+  // };
+
+  const handleDownload = (notice: Notice) => {
+    if (notice.fileUrl) {
+      const link = document.createElement("a");
+      link.href = notice.fileUrl;
+      link.target = "_blank";
+      link.download = `${notice.title.replace(/\s+/g, "_")}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   const closePreview = () => {
     setPreviewNotice(null);
   };
+
+  const formatDate = (date: Date | string) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <div className="space-y-4">
+        {[1, 2, 3].map((i) => (
+          <Card
+            key={i}
+            className="relative overflow-hidden border-l-4 border-l-slate-200"
+          >
+            <CardHeader className="pb-2">
+              <Skeleton className="h-6 w-3/4" />
+              <Skeleton className="h-4 w-1/4 mt-2" />
+            </CardHeader>
+            <CardContent>
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-3/4" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">
@@ -82,8 +139,7 @@ export default function NoticeList({
             No notices found
           </h3>
           <p className="text-slate-500 mt-1">
-            Create your first notice by clicking the &quot;Add Notice&quot;
-            button.
+            Create your first notice by clicking the &quot;Add Notice&quot; button.
           </p>
         </div>
       ) : (
@@ -138,24 +194,17 @@ export default function NoticeList({
                 <p className="text-slate-600 mb-4 whitespace-pre-line">
                   {notice.content}
                 </p>
-                {notice.pdfUrl && (
+                {notice.fileUrl && (
                   <Badge
                     variant="outline"
                     className="flex items-center gap-1 cursor-pointer hover:bg-emerald-50 border-emerald-200 text-emerald-700"
-                    onClick={() => handlePreview(notice)}
+                    onClick={() => handleDownload(notice)}
                   >
                     <FileText className="h-3 w-3" />
                     View PDF
                   </Badge>
                 )}
               </CardContent>
-              <CardFooter className="text-sm text-muted-foreground pt-0">
-                {notice.updatedAt && notice.updatedAt !== notice.createdAt && (
-                  <span className="text-xs text-slate-400">
-                    Last updated: {formatDate(notice.updatedAt)}
-                  </span>
-                )}
-              </CardFooter>
             </Card>
           ))}
         </div>
@@ -179,8 +228,16 @@ export default function NoticeList({
             <AlertDialogAction
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground"
+              disabled={isDeleting}
             >
-              Delete
+              {isDeleting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Deleting...
+                </>
+              ) : (
+                "Delete"
+              )}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -191,8 +248,9 @@ export default function NoticeList({
         <PdfPreview
           notice={previewNotice}
           onClose={closePreview}
-          onDelete={() => {
-            const updatedNotice = { ...previewNotice, pdfUrl: null };
+          onDelete={async () => {
+            // Simulate removing PDF from notice
+            const updatedNotice = { ...previewNotice, fileUrl: null };
             onEdit(updatedNotice);
             closePreview();
           }}

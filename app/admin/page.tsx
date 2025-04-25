@@ -23,9 +23,9 @@ const cards = [
     link: "/admin/faculty",
   },
   // {
-  //   name: "Settings",
-  //   description: "Update application configuration and preferences.",
-  //   link: "/admin/settings",
+  //   name: "User Management",
+  //   description: "Add or delete new admins and users",
+  //   link: "/admin/users",
   // },
 ];
 

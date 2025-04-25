@@ -12,7 +12,11 @@ const details = {
 };
 
 export default async function Home() {
-  const notices = await prisma.notice.findMany();
+  const notices = await prisma.notice.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return (
     <>
       <CarouselBody />

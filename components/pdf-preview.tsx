@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Download, Trash } from "lucide-react";
-import type { Notice } from "@/types/notice";
+import { Prisma } from "@/lib/prisma";
 
+type Notice = Prisma.Notice;
 // Set the worker source for react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 // pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
@@ -46,9 +47,9 @@ export default function PdfPreview({
   };
 
   const handleDownload = () => {
-    if (notice.pdfUrl) {
+    if (notice.fileUrl) {
       const link = document.createElement("a");
-      link.href = notice.pdfUrl;
+      link.href = notice.fileUrl;
       link.download = `${notice.title.replace(/\s+/g, "_")}.pdf`;
       document.body.appendChild(link);
       link.click();
@@ -64,9 +65,9 @@ export default function PdfPreview({
         </DialogHeader>
 
         <div className="flex-1 overflow-auto flex justify-center bg-slate-100 rounded-md">
-          {notice.pdfUrl ? (
+          {notice.fileUrl ? (
             <Document
-              file={notice.pdfUrl}
+              file={notice.fileUrl}
               onLoadSuccess={onDocumentLoadSuccess}
               loading={
                 <div className="flex items-center justify-center h-full">

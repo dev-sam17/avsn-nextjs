@@ -4,11 +4,10 @@ import { notFound } from "next/navigation";
 import FacultyForm from "@/components/faculty-form";
 import { getFaculty } from "@/lib/actions/faculty";
 
-export default async function EditFacultyPage({
-  params,
-}: {
-  params: { id: string };
+export default async function EditFacultyPage(props: {
+  params: Promise<{ id: string }>;
 }) {
+  const params = await props.params;
   const faculty = await getFaculty(params.id);
 
   if (!faculty) {
