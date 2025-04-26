@@ -45,3 +45,15 @@ model PasswordResetToken {
   expires   DateTime
   createdAt DateTime @default(now())
 }
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+  read      Boolean  @default(false)
+  archived  Boolean  @default(false)
+}

@@ -22,6 +22,11 @@ const cards = [
     description: "Add or update faculty information.",
     link: "/admin/faculty",
   },
+  {
+    name: "Message Center",
+    description: "View, archive, and delete messages from contact us form.",
+    link: "/admin/messages",
+  },
   // {
   //   name: "User Management",
   //   description: "Add or delete new admins and users",

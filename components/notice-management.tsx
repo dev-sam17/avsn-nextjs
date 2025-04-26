@@ -54,7 +54,6 @@ export default function NoticeManagement() {
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchNotices();
   }, []);

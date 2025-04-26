@@ -8,11 +8,9 @@ import {
   Phone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { ColourfulText } from "@/components/ui/colourful-text";
+import ContactForm from "@/components/contact-form";
 
 export default function ContactPage() {
   // Replace with your actual WhatsApp number
@@ -143,7 +141,7 @@ export default function ContactPage() {
                 <h2 className="text-xl font-semibold mb-4">
                   Send me a message
                 </h2>
-                <form className="space-y-4">
+                {/* <form className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="first-name">First name</Label>
@@ -190,7 +188,8 @@ export default function ContactPage() {
                   >
                     Send message
                   </Button>
-                </form>
+                </form> */}
+                <ContactForm />
               </div>
             </div>
           </div>

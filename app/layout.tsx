@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { Toaster } from "@/components/toaster";
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -31,7 +32,10 @@ export default async function RootLayout({
   if (isAdmin) {
     return (
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          <main>{children}</main>
+          <Toaster />
+        </body>
       </html>
     );
   }
@@ -42,6 +46,7 @@ export default async function RootLayout({
         <NavMenu />
 
         {children}
+        <Toaster />
         <Footer />
       </body>
     </html>
