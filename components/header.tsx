@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ImageIcon, Bell, Menu } from "lucide-react";
 import {
@@ -24,7 +23,6 @@ import {
 import { LogoutButton } from "./auth/logout-button";
 
 export default function Header() {
-  const pathname = usePathname();
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   return (
@@ -42,18 +40,8 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-4">
-            <Link href="/admin/image-portal" passHref>
-              <Button
-                variant={pathname === "/image-portal" ? "default" : "ghost"}
-                className={
-                  pathname === "/image-portal"
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : ""
-                }
-              >
-                <ImageIcon className="mr-2 h-4 w-4" />
-                Image Portal
-              </Button>
+            <Link href="/admin">
+              <Button variant="ghost">Admin Portal</Button>
             </Link>
             <LogoutButton />
           </nav>

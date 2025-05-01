@@ -1,3 +1,5 @@
+"use client";
+
 import type * as React from "react";
 
 import { NavMain } from "./nav-main";
@@ -30,30 +32,9 @@ const data = {
       ],
     },
     {
-      title: "Campus",
+      title: "Activities",
       url: "#",
-      items: [
-        {
-          title: "Hostel",
-          url: "#",
-          id: "campus-hostel",
-        },
-        {
-          title: "Library",
-          url: "#",
-          id: "campus-library",
-        },
-        {
-          title: "Lab",
-          url: "#",
-          id: "campus-lab",
-        },
-        {
-          title: "Faculty",
-          url: "#",
-          id: "campus-faculty",
-        },
-      ],
+      items: [],
     },
   ],
 };
@@ -64,6 +45,7 @@ export function AppSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { sidebarTitle?: string }) {
   const router = useRouter();
+
   return (
     <Sidebar className={className} title={sidebarTitle} {...props}>
       <SidebarHeader>

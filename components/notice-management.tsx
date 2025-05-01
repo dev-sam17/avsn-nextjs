@@ -87,6 +87,7 @@ export default function NoticeManagement() {
         toast({
           title: "Success",
           description: "Notice deleted successfully",
+          className: "bg-emerald-50 border-emerald-200",
         });
       } else {
         throw new Error("Failed to delete notice");
@@ -112,6 +113,7 @@ export default function NoticeManagement() {
         toast({
           title: "Success",
           description: "Notice updated successfully",
+          className: "bg-emerald-50 border-emerald-200",
         });
       }
     } else {
@@ -121,6 +123,7 @@ export default function NoticeManagement() {
       toast({
         title: "Success",
         description: "Notice created successfully",
+        className: "bg-emerald-50 border-emerald-200",
       });
     }
     setIsFormOpen(false);

@@ -73,10 +73,6 @@ export default function NoticeList({
     setDeleteId(null);
   };
 
-  // const handlePreview = (notice: Notice) => {
-  //   setPreviewNotice(notice);
-  // };
-
   const handleDownload = (notice: Notice) => {
     if (notice.fileUrl) {
       const link = document.createElement("a");
@@ -139,7 +135,8 @@ export default function NoticeList({
             No notices found
           </h3>
           <p className="text-slate-500 mt-1">
-            Create your first notice by clicking the &quot;Add Notice&quot; button.
+            Create your first notice by clicking the &quot;Add Notice&quot;
+            button.
           </p>
         </div>
       ) : (

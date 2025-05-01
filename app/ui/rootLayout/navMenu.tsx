@@ -62,28 +62,6 @@ const campus = {
   ],
 };
 
-const gallery = {
-  title: "Gallery",
-  items: [
-    {
-      name: "Activities & Events",
-      href: "#",
-    },
-    {
-      name: "Hostel",
-      href: "#",
-    },
-    {
-      name: "Library",
-      href: "#",
-    },
-    {
-      name: "Laboratory",
-      href: "#",
-    },
-  ],
-};
-
 const NavMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -99,7 +77,9 @@ const NavMenu: React.FC = () => {
             <Dropdown {...about} />
             <Dropdown {...courses} />
             <Dropdown {...campus} />
-            <Dropdown {...gallery} />
+            <Link href="#" className="text-white hover:text-teal-100 p-4">
+              Activities
+            </Link>
             <Link
               href="/contact"
               className="text-white hover:text-teal-100 p-4"
@@ -192,7 +172,13 @@ const SideDrawer = ({
       <Submenu data={about} close={close} />
       <Submenu data={courses} close={close} />
       <Submenu data={campus} close={close} />
-      <Submenu data={gallery} close={close} />
+      <Link
+        href="#"
+        onClick={() => close(false)}
+        className="block py-2 text-white"
+      >
+        Activities
+      </Link>
       <Link
         href="/contact"
         onClick={() => close(false)}

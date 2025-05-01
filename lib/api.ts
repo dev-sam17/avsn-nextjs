@@ -47,7 +47,6 @@ export async function uploadImageToCloudinary(file: File, folder: string) {
     }
 
     const data = await response.json();
-    console.log('Uploaded image:', data);
     return data;
   } catch (error) {
     console.error('Error uploading image:', error);
@@ -55,9 +54,9 @@ export async function uploadImageToCloudinary(file: File, folder: string) {
   }
 }
 
-export async function deleteImageFromCloudinary(public_id: string) {
+export async function deleteImageFromCloudinary(public_id: string, action: string | null = null) {
   try {
-    const response = await fetch('/api/cloudinary', {
+    const response = await fetch(`/api/cloudinary?action=${action}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +69,6 @@ export async function deleteImageFromCloudinary(public_id: string) {
     }
 
     const data = await response.json();
-    console.log('Deleted image:', data);
     return data;
   } catch (error) {
     console.error('Error deleting image:', error);

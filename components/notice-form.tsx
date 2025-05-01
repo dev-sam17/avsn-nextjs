@@ -115,6 +115,7 @@ export default function NoticeForm({
             <Check className="h-5 w-5 text-emerald-600" />
           </div>
         ),
+        className: "bg-emerald-50 border-emerald-200",
       });
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -138,6 +139,7 @@ export default function NoticeForm({
     toast({
       title: "File removed",
       description: "PDF file has been removed",
+      className: "bg-emerald-50 border-emerald-200",
     });
   };
 

@@ -1,14 +1,23 @@
 "use client";
 
 import * as React from "react";
-import { Upload, Trash2, RefreshCw, ImagePlus, ImageIcon } from "lucide-react";
-
+import {
+  Upload,
+  Trash2,
+  ImagePlus,
+  Calendar,
+  RefreshCw,
+  TrashIcon,
+  Loader2,
+} from "lucide-react";
+import { format } from "date-fns";
 import {
   getImagesByFolderName,
   uploadImageToCloudinary,
   deleteImageFromCloudinary,
   type Image,
 } from "@/lib/api";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,51 +27,71 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { useActivities } from "@/hooks/use-activities";
 
-interface ImageManagerProps {
-  sectionId: string;
-  sectionTitle: string;
-  pageTitle: string;
+interface ActivityUploadPanelProps {
+  activityId: string;
 }
 
-export function ImageManager({
-  sectionId,
-  sectionTitle,
-  pageTitle,
-}: ImageManagerProps) {
+export function ActivityUploadPanel({ activityId }: ActivityUploadPanelProps) {
   const { toast } = useToast();
+  const { activities, removeActivity } = useActivities();
   const [images, setImages] = React.useState<Image[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isUploading, setIsUploading] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const [deleteId, setDeleteId] = React.useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = React.useState(false);
+
+  const activity = activities.find((a) => a.id === activityId);
 
   const loadImages = React.useCallback(async () => {
-    if (!sectionId) return;
+    if (!activity?.sectionId) return;
 
     setIsLoading(true);
     try {
-      const data = await getImagesByFolderName(sectionId);
+      const data = await getImagesByFolderName(activity.sectionId);
       setImages(data.images);
     } catch (error) {
-      console.log("Error loading images:", error);
+      console.error("Error loading images:", error);
       toast({
         title: "Error loading images",
         description:
           "There was a problem loading the images. Please try again.",
         variant: "destructive",
+        className: "bg-emerald-50 border-emerald-200",
       });
     } finally {
       setIsLoading(false);
     }
-  }, [sectionId, toast]);
+  }, [activity?.sectionId]);
 
   React.useEffect(() => {
+    if (!activity?.sectionId) return;
     loadImages();
-  }, [loadImages]);
+  }, [loadImages, activity?.sectionId]);
+
+  if (!activity) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <p className="text-muted-foreground">Activity not found</p>
+      </div>
+    );
+  }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -72,25 +101,25 @@ export function ImageManager({
 
     try {
       const uploadPromises = Array.from(files).map((file) =>
-        uploadImageToCloudinary(file, sectionId)
+        uploadImageToCloudinary(file, activity.sectionId)
       );
 
       await Promise.all(uploadPromises);
-      loadImages(); // Reload images after upload
+      loadImages();
 
       toast({
         title: "Images uploaded",
-        description: `${files.length} image(s) uploaded successfully.`,
+        description: `${files.length} image(s) uploaded successfully for ${activity.title}.`,
         className: "bg-emerald-50 border-emerald-200",
       });
     } catch (error) {
-      console.log("Error uploading images:", error);
       toast({
         title: "Upload failed",
         description:
           "There was a problem uploading your images. Please try again.",
         variant: "destructive",
       });
+      console.error(error);
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
@@ -99,9 +128,9 @@ export function ImageManager({
     }
   };
 
-  const handleDeleteImage = async (id: string) => {
+  const handleDeleteImage = async (imageId: string) => {
     try {
-      await deleteImageFromCloudinary(id);
+      await deleteImageFromCloudinary(imageId);
       loadImages(); // Reload images after upload
 
       toast({
@@ -110,14 +139,34 @@ export function ImageManager({
         className: "bg-emerald-50 border-emerald-200",
       });
     } catch (error) {
-      console.log("Error deleting image:", error);
       toast({
         title: "Delete failed",
         description:
           "There was a problem deleting the image. Please try again.",
         variant: "destructive",
       });
+      console.error(error);
     }
+  };
+
+  const handleDelete = (id: string) => {
+    setDeleteId(id);
+  };
+  const confirmDelete = async () => {
+    if (deleteId) {
+      setIsDeleting(true);
+      await handleDeleteActivity();
+      setIsDeleting(false);
+      setDeleteId(null);
+    }
+  };
+
+  const cancelDelete = () => {
+    setDeleteId(null);
+  };
+
+  const handleDeleteActivity = async () => {
+    removeActivity(activity.id, activity.sectionId);
   };
 
   return (
@@ -125,26 +174,26 @@ export function ImageManager({
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-emerald-900">
-            {sectionTitle}
+            {activity.title}
           </h1>
-          <p className="text-emerald-600">{pageTitle} section</p>
+          <p className="text-emerald-600 flex items-center gap-1">
+            <Calendar className="h-4 w-4" />
+            {format(new Date(activity.date), "PPP")}
+          </p>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={loadImages}
-          disabled={isLoading}
-          className="border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
-        >
-          <RefreshCw
-            className={`mr-2 h-4 w-4 ${
-              isLoading ? "animate-spin text-emerald-500" : "text-emerald-500"
-            }`}
-          />
-        </Button>
+        <div>
+          {/* // add a delete button with delete icon */}
+          <Button
+            variant={"destructive"}
+            onClick={() => handleDelete(activity.id)}
+          >
+            <TrashIcon className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
 
       <Separator className="my-6 bg-emerald-100" />
+
       <Card className="border-emerald-100 shadow-sm overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-emerald-50 to-transparent border-b border-emerald-100">
           <CardTitle className="text-emerald-800 flex items-center gap-2">
@@ -152,8 +201,7 @@ export function ImageManager({
             Upload Images
           </CardTitle>
           <CardDescription>
-            Add new images to the {sectionTitle} section. Supported formats:
-            JPG, PNG, GIF.
+            Add new images to the {activity.title}.
           </CardDescription>
         </CardHeader>
         <CardContent className="pt-6">
@@ -170,9 +218,9 @@ export function ImageManager({
                     type="file"
                     accept="image/*"
                     multiple
+                    onChange={handleFileChange}
                     className="border-emerald-200 focus-visible:ring-emerald-500 file:bg-emerald-50 file:text-emerald-700 file:border-0 hover:file:bg-emerald-100 transition-colors"
                     disabled={isUploading}
-                    onChange={handleFileChange}
                   />
                 </div>
                 <Button
@@ -197,13 +245,8 @@ export function ImageManager({
 
       <Card className="border-emerald-100 shadow-sm">
         <CardHeader className="bg-gradient-to-r from-emerald-50 to-transparent border-b border-emerald-100">
-          <CardTitle className="text-emerald-800 flex items-center gap-2">
-            <ImageIcon className="h-5 w-5 text-emerald-500" />
-            Current Images
-          </CardTitle>
-          <CardDescription>
-            Manage existing images for the {sectionTitle} section.
-          </CardDescription>
+          <CardTitle className="text-emerald-800">Activity Images</CardTitle>
+          <CardDescription>Manage images for {activity.title}.</CardDescription>
         </CardHeader>
         <CardContent className="pt-6">
           {isLoading ? (
@@ -220,11 +263,9 @@ export function ImageManager({
           ) : images.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center bg-emerald-50/50 rounded-lg border border-dashed border-emerald-200">
               <div className="rounded-full bg-emerald-100/80 p-3 mb-3">
-                <ImageIcon className="h-8 w-8 text-emerald-500" />
+                <ImagePlus className="h-8 w-8 text-emerald-500" />
               </div>
-              <p className="text-emerald-800 font-medium mb-1">
-                No images available
-              </p>
+              <p className="text-emerald-800 font-medium mb-1">No images yet</p>
               <p className="text-sm text-emerald-600">
                 Upload images using the form above.
               </p>
@@ -240,7 +281,7 @@ export function ImageManager({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={image.secure_url || "/placeholder.svg"}
-                      alt={`Image for ${sectionTitle}`}
+                      alt={`Image for ${activity.title}`}
                       className="h-full w-full object-cover transition-transform group-hover:scale-105"
                     />
                   </div>
@@ -254,11 +295,6 @@ export function ImageManager({
                       <Trash2 className="size-4 mr-1" /> Delete
                     </Button>
                   </div>
-                  <div className="absolute top-2 right-2">
-                    <span className="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                      ID: {image.public_id.slice(-4)}
-                    </span>
-                  </div>
                 </div>
               ))}
             </div>
@@ -266,22 +302,43 @@ export function ImageManager({
         </CardContent>
         <CardFooter className="flex justify-between border-t border-emerald-100 bg-emerald-50/50">
           <p className="text-sm text-emerald-700">
-            {images.length} image{images.length !== 1 ? "s" : ""} total
+            {images.length} image
+            {images.length !== 1 ? "s" : ""} total
           </p>
-          {images.length > 0 && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-emerald-700 hover:text-emerald-900 hover:bg-emerald-100"
-              onClick={() => {
-                loadImages();
-              }}
-            >
-              <RefreshCw className="h-3 w-3 mr-1" /> Refresh
-            </Button>
-          )}
         </CardFooter>
       </Card>
+
+      <AlertDialog
+        open={deleteId !== null}
+        onOpenChange={() => deleteId && setDeleteId(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete this
+              activity and any associated images.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={cancelDelete}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground"
+              disabled={isDeleting}
+            >
+              {isDeleting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Deleting...
+                </>
+              ) : (
+                "Delete"
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

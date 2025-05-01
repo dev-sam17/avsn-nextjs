@@ -52,6 +52,10 @@ async function deleteImageFromCloudinary(publicId: string): Promise<unknown> {
     return cloudinary.uploader.destroy(publicId);
 }
 
+async function deleteEmptyFolderFromCloudinary(folder: string) {
+    return cloudinary.api.delete_folder(folder);
+}
+
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const folder = searchParams.get('folder');
@@ -94,8 +98,19 @@ export async function POST(req: NextRequest) {
 
 
 export async function DELETE(req: NextRequest) {
+    const { searchParams } = new URL(req.url);
+    const action = searchParams.get('action') ?? null;
     const body = await req.json();
     const { public_id } = body;
+
+    if (action === "deleteFolder") {
+        try {
+            const result = await deleteEmptyFolderFromCloudinary(public_id);
+            return NextResponse.json({ result });
+        } catch (error) {
+            return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+        }
+    }
 
     if (!public_id || typeof public_id !== 'string') {
         return NextResponse.json({ error: 'Missing or invalid public_id' }, { status: 400 });
