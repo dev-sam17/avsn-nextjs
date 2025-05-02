@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { Toaster } from "@/components/toaster";
+import { Analytics } from "@vercel/analytics/next";
 
 import type { Metadata } from "next";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <NavMenu />
 
         {children}
+        <Analytics />
         <Toaster />
         <Footer />
       </body>
