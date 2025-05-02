@@ -7,8 +7,8 @@ import {
   getImagesByFolderName,
   uploadImageToCloudinary,
   deleteImageFromCloudinary,
-  type Image,
 } from "@/lib/api";
+import { Image } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import {
   Card,

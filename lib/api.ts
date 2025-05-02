@@ -1,11 +1,4 @@
 
-export interface Image {
-  public_id: string
-  secure_url: string
-  format: string
-  width: number
-  height: number
-}
 
 export async function getImagesByFolderName(folder: string) {
   try {

@@ -7,11 +7,8 @@ import {
 } from "@/lib/actions/activities";
 import * as React from "react";
 import { Activity, ActivityForm } from "@/lib/types";
-import {
-  getImagesByFolderName,
-  deleteImageFromCloudinary,
-  type Image,
-} from "@/lib/api";
+import { getImagesByFolderName, deleteImageFromCloudinary } from "@/lib/api";
+import { Image } from "@/lib/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 

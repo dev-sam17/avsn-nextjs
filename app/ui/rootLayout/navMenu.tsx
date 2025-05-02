@@ -67,7 +67,7 @@ const NavMenu: React.FC = () => {
 
   return (
     <>
-      <header className="bg-teal-700 shadow-md sticky top-0 z-10">
+      <header className="bg-teal-700 shadow-md sticky top-0 z-1000">
         <div className="container mx-auto">
           {/* Navigation */}
           <nav className=" hidden md:flex space-x-6 items-center justify-center">
@@ -77,7 +77,10 @@ const NavMenu: React.FC = () => {
             <Dropdown {...about} />
             <Dropdown {...courses} />
             <Dropdown {...campus} />
-            <Link href="#" className="text-white hover:text-teal-100 p-4">
+            <Link
+              href="/activities"
+              className="text-white hover:text-teal-100 p-4"
+            >
               Activities
             </Link>
             <Link
