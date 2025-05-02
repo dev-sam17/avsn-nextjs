@@ -67,7 +67,7 @@ const NavMenu: React.FC = () => {
 
   return (
     <>
-      <header className="bg-teal-700 shadow-md sticky top-0 z-1000">
+      <header className=" bg-teal-700 shadow-md sticky top-0 z-20">
         <div className="container mx-auto">
           {/* Navigation */}
           <nav className=" hidden md:flex space-x-6 items-center justify-center">

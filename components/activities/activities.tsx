@@ -21,7 +21,7 @@ export default function Activities({ activities }: { activities: Activity[] }) {
           className="relative"
         >
           {index < activities.length - 1 && (
-            <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-teal-500 to-transparent h-full z-0" />
+            <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-teal-500 to-transparent h-full z-10" />
           )}
 
           <div className="relative z-10">

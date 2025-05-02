@@ -106,7 +106,7 @@ export function ActivityGallery({ sectionId }: { sectionId: string }) {
             tabIndex={0}
           >
             <motion.button
-              className="absolute top-4 right-4 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-10"
+              className="absolute top-12 right-4 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-60"
               onClick={(e) => {
                 e.stopPropagation();
                 closeLightbox();
@@ -120,7 +120,7 @@ export function ActivityGallery({ sectionId }: { sectionId: string }) {
             </motion.button>
 
             <motion.button
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-50"
               onClick={(e) => {
                 e.stopPropagation();
                 goToPrevious();
@@ -134,7 +134,7 @@ export function ActivityGallery({ sectionId }: { sectionId: string }) {
             </motion.button>
 
             <motion.button
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-50"
               onClick={(e) => {
                 e.stopPropagation();
                 goToNext();
