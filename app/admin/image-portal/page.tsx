@@ -1,5 +1,7 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ImageManager } from "@/components/image-manager";
 import { ActivityUploadPanel } from "@/components/activity-upload-panel";
@@ -27,6 +29,7 @@ import {
 
 // Add this at the top of the file, after the imports
 import "./sidebar-styles.css";
+import { useEffect } from "react";
 
 function MainContent() {
   const { activeSection } = useContentContext();
@@ -102,6 +105,14 @@ function MainContent() {
 }
 
 export default function Page() {
+  const { status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [status, router]);
   return (
     <ActivitiesProvider>
       <ContentProvider>

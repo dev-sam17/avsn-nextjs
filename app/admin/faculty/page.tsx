@@ -1,10 +1,17 @@
 import Link from "next/link";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import { ArrowLeft, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FacultyList from "@/components/faculty-list";
 import { LogoutButton } from "@/components/auth/logout-button";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
   return (
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-8">

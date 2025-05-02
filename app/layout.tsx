@@ -7,6 +7,7 @@ import "./globals.css";
 import Header from "@/ui/rootLayout/header";
 import NavMenu from "@/ui/rootLayout/navMenu";
 import { Footer } from "@/ui/rootLayout/footer";
+import AuthProvider from "@/components/auth/AuthProvider";
 
 export const metadata: Metadata = {
   title: "AVSN",
@@ -34,7 +35,9 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body>
-          <main>{children}</main>
+          <main>
+            <AuthProvider>{children}</AuthProvider>
+          </main>
           <Toaster />
         </body>
       </html>
