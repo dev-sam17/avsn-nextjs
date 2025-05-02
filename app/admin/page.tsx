@@ -1,10 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import Logo from "@/public/avsn-logo.jpg";
 import { LogoutButton } from "@/components/auth/logout-button";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 const cards = [
   {
@@ -34,7 +34,12 @@ const cards = [
   // },
 ];
 
-export default function AdminPortal() {
+export default async function AdminPortal() {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
