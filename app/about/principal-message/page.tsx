@@ -1,4 +1,13 @@
-export default function Page() {
+import Image from "next/image";
+import { prisma } from "@/lib/prisma";
+
+export default async function Page() {
+  const principal = await prisma.faculty.findFirst({
+    where: {
+      designation: "Principal", // Replace with the actual ID of your principal message
+    },
+  });
+
   return (
     <section className="max-w-5xl mx-auto px-4 py-12 bg-teal-50">
       <div className="text-center mb-10">
@@ -8,12 +17,22 @@ export default function Page() {
       </div>
 
       <div className="flex flex-col md:flex-row items-center gap-10 mb-12">
-        <div className="w-40 h-40 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center text-gray-500">
-          [Image Placeholder]
-        </div>
+        {principal ? (
+          <Image
+            src={principal?.imageUrl as string}
+            alt=""
+            width={160}
+            height={160}
+            className="rounded-full"
+          />
+        ) : (
+          <div className="w-40 h-40 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center text-gray-500">
+            [Image Placeholder]
+          </div>
+        )}
         <div>
           <h2 className="text-2xl font-semibold text-slate-800">
-            Dr. Meena Sharma
+            {principal?.name}
           </h2>
           <p className="text-sm text-gray-500 mb-4">
             Principal, AV School Of Nursing
