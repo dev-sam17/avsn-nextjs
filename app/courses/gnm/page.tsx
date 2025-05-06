@@ -1,3 +1,34 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "GNM Nursing Course - AV School of Nursing",
+  description:
+    "Enroll in General Nursing and Midwifery (GNM) course with comprehensive nursing education at AV School of Nursing.",
+  openGraph: {
+    title: "GNM Nursing Course - AV School of Nursing",
+    description:
+      "Join our GNM program to build a strong nursing foundation with clinical exposure.",
+    url: "https://www.avschoolofnursing.in/courses/gnm",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GNM Nursing Course - AV School of Nursing",
+    description:
+      "Apply now for GNM nursing course with practical training and expert guidance.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
+
 export default function Page() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">

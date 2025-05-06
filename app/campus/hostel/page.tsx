@@ -1,3 +1,33 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Hostel Facilities - AV School of Nursing",
+  description:
+    "Safe, comfortable hostel accommodation with modern amenities for students at AV School of Nursing.",
+  openGraph: {
+    title: "Hostel Facilities - AV School of Nursing",
+    description:
+      "Explore hostel life and student accommodation at AV School of Nursing.",
+    url: "https://www.avschoolofnursing.in/campus/hostel",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hostel Facilities - AV School of Nursing",
+    description: "Discover safe and comfortable hostel amenities for students.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
+
 export default function Page() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">

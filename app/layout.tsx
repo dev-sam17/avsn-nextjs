@@ -2,17 +2,11 @@ import { cookies } from "next/headers";
 import { Toaster } from "@/components/toaster";
 import { Analytics } from "@vercel/analytics/next";
 
-import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/ui/rootLayout/header";
 import NavMenu from "@/ui/rootLayout/navMenu";
 import { Footer } from "@/ui/rootLayout/footer";
 import AuthProvider from "@/components/auth/AuthProvider";
-
-export const metadata: Metadata = {
-  title: "AVSN",
-  description: "AV School Of Nursing",
-};
 
 const HeaderProps = {
   universityName: "AV School Of Nursing",

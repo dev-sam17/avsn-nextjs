@@ -1,3 +1,33 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Library - AV School of Nursing",
+  description:
+    "Extensive library resources supporting nursing education and research at AV School of Nursing.",
+  openGraph: {
+    title: "Library - AV School of Nursing",
+    description:
+      "Access academic resources, journals, and research materials in our library.",
+    url: "https://www.avschoolofnursing.in/campus/library",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Library - AV School of Nursing",
+    description: "Explore our nursing library and its resources.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
+
 export default function Page() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12">

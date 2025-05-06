@@ -1,4 +1,33 @@
-// import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Mission - AV School of Nursing",
+  description:
+    "Empowering future healthcare leaders with compassion, excellence, and integrity. Learn our mission at AV School of Nursing.",
+  openGraph: {
+    title: "Our Mission - AV School of Nursing",
+    description:
+      "Know the mission that drives AV School of Nursing to create skilled nursing professionals.",
+    url: "https://www.avschoolofnursing.in/about/our-mission",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Mission - AV School of Nursing",
+    description:
+      "Discover our mission of excellence in nursing education and care.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
 
 export default function Page() {
   return (

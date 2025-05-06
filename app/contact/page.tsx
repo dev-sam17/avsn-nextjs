@@ -11,9 +11,30 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ColourfulText } from "@/components/ui/colourful-text";
 import ContactForm from "@/components/contact-form";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us - AV School of Nursing",
+  description: "Get in touch with AV School of Nursing for admissions, queries, and campus visits.",
+  openGraph: {
+    title: "Contact Us - AV School of Nursing",
+    description: "Reach out to AV School of Nursing for all inquiries and admissions.",
+    url: "https://www.avschoolofnursing.in/contact",
+    siteName: "AV School of Nursing",
+    images: [{ url: "https://www.avschoolofnursing.in/og-image.jpg", width: 1200, height: 630 }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us - AV School of Nursing",
+    description: "Contact our team for admissions and queries.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
+
 
 export default function ContactPage() {
-  // Replace with your actual WhatsApp number
   const whatsappNumber = "+918210692090";
   const email = `avschoolofnursing121@gmail.com`;
   const whatsappMessage = encodeURIComponent(

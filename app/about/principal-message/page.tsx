@@ -1,5 +1,35 @@
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Principal’s Message - AV School of Nursing",
+  description:
+    "A warm message from the Principal of AV School of Nursing, highlighting our educational philosophy and commitment.",
+  openGraph: {
+    title: "Principal’s Message - AV School of Nursing",
+    description:
+      "Read the principal’s vision and message at AV School of Nursing.",
+    url: "https://www.avschoolofnursing.in/about/principal-message",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Principal’s Message - AV School of Nursing",
+    description:
+      "Hear from our principal about the ethos and vision of our college.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
 
 export default async function Page() {
   const principal = await prisma.faculty.findFirst({

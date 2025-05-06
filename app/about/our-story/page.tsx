@@ -1,3 +1,26 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Our Story - AV School of Nursing",
+  description: "Read about the inspiring journey and milestones of AV School of Nursing, empowering healthcare through education.",
+  openGraph: {
+    title: "Our Story - AV School of Nursing",
+    description: "Explore the growth and achievements of AV School of Nursing since inception.",
+    url: "https://www.avschoolofnursing.in/about/our-story",
+    siteName: "AV School of Nursing",
+    images: [{ url: "https://www.avschoolofnursing.in/og-image.jpg", width: 1200, height: 630 }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Story - AV School of Nursing",
+    description: "Discover the milestones and achievements of our institution.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
+
+
 export default function Page() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 bg-teal-50">

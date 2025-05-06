@@ -2,6 +2,36 @@ import { Suspense } from "react";
 import Activities from "@/components/activities/activities";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getActivities } from "@/lib/actions/activities";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Student Activities - AV School of Nursing",
+  description:
+    "Explore vibrant student life, extracurricular activities, seminars, and cultural events at AV School of Nursing.",
+  openGraph: {
+    title: "Student Activities - AV School of Nursing",
+    description:
+      "Discover the engaging activities and student life at AV School of Nursing.",
+    url: "https://www.avschoolofnursing.in/activities",
+    siteName: "AV School of Nursing",
+    images: [
+      {
+        url: "https://www.avschoolofnursing.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Student Activities - AV School of Nursing",
+    description:
+      "See how our students engage beyond classrooms through various events.",
+    images: ["https://www.avschoolofnursing.in/og-image.jpg"],
+  },
+};
 
 export default async function ActivitiesPage() {
   const activities = await getActivities();
