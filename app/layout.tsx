@@ -19,7 +19,7 @@ const HeaderProps = {
   contactInfo: {
     address: "Mahavir Nagar, Kokar, Ranchi, Jharkhand 834001",
     number: "8210692090",
-    email: "example@avsn.com",
+    email: "avschoolofnursing121@gmail.com",
   },
 };
 

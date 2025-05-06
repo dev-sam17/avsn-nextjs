@@ -81,7 +81,7 @@ function Footerdemo() {
               <p>Mahavir Nagar, Kokar</p>
               <p>Ranchi, Jharkhand 834001</p>
               <p>Phone: 08210692090</p>
-              <p>Email: hello@example.com</p>
+              <p>Email: avschoolofnursing121@gmail.com</p>
             </address>
           </div>
           <div className="relative">

@@ -15,7 +15,7 @@ import ContactForm from "@/components/contact-form";
 export default function ContactPage() {
   // Replace with your actual WhatsApp number
   const whatsappNumber = "+918210692090";
-  const email = "example@avsn.com";
+  const email = `avschoolofnursing121@gmail.com`;
   const whatsappMessage = encodeURIComponent(
     "Hello, I'd like to get in touch!"
   );
@@ -141,54 +141,6 @@ export default function ContactPage() {
                 <h2 className="text-xl font-semibold mb-4">
                   Send me a message
                 </h2>
-                {/* <form className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <Label htmlFor="first-name">First name</Label>
-                      <Input
-                        id="first-name"
-                        placeholder="Enter your first name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="last-name">Last name</Label>
-                      <Input
-                        id="last-name"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone (optional)</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="How can we help you?"
-                      className="min-h-[120px]"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-teal-600 hover:bg-teal-800"
-                  >
-                    Send message
-                  </Button>
-                </form> */}
                 <ContactForm />
               </div>
             </div>
