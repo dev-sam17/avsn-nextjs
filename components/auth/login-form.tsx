@@ -55,20 +55,19 @@ export function LoginForm() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
-              <Link
+              {/* <Link
                 href="/forgot-password"
                 className="text-sm text-emerald-600 hover:text-emerald-500"
               >
                 Forgot password?
-              </Link>
+              </Link> */}
             </div>
             <Input id="password" name="password" type="password" required />
           </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <SubmitButton />
-          {/* <button type="submit">Login</button> */}
-          <div className="text-center text-sm">
+          {/* <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
             <Link
               href="/register"
@@ -76,7 +75,7 @@ export function LoginForm() {
             >
               Register
             </Link>
-          </div>
+          </div> */}
         </CardFooter>
       </form>
     </Card>
