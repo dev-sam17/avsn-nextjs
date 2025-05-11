@@ -13,18 +13,15 @@ export async function GET() {
     // Static routes
     const staticUrls = [
         { path: '/', lastmod: new Date() },
-        { path: '/about', lastmod: new Date() },
         { path: '/about/our-mission', lastmod: new Date() },
         { path: '/about/our-story', lastmod: new Date() },
         { path: '/about/principal-message', lastmod: new Date() },
         { path: '/activities', lastmod: new Date() },
-        { path: '/campus', lastmod: new Date() },
         { path: '/campus/faculty', lastmod: new Date() },
         { path: '/campus/hostel', lastmod: new Date() },
         { path: '/campus/laboratory', lastmod: new Date() },
         { path: '/campus/library', lastmod: new Date() },
         { path: '/contact', lastmod: new Date() },
-        { path: '/courses', lastmod: new Date() },
         { path: '/courses/anm', lastmod: new Date() },
         { path: '/courses/gnm', lastmod: new Date() },
     ];
