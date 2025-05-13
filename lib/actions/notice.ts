@@ -34,13 +34,30 @@ export async function getNoticeById(id: string): Promise<Notice | null> {
 export async function createNotice(data: {
     title: string
     content: string
+    isImportant: boolean
     fileUrl?: string | null
 }): Promise<Notice | null> {
     try {
+        if (data.isImportant) {
+            const oldImportantNotice = await prisma.notice.findFirst({
+                where: {
+                    isImportant: true,
+                },
+            })
+
+            if (oldImportantNotice) {
+                await prisma.notice.update({
+                    where: { id: oldImportantNotice.id },
+                    data: { isImportant: false }
+                })
+            }
+        }
+
         const notice = await prisma.notice.create({
             data: {
                 title: data.title,
                 content: data.content,
+                isImportant: data.isImportant,
                 fileUrl: data.fileUrl || null,
             },
         })
@@ -54,9 +71,23 @@ export async function createNotice(data: {
 
 export async function updateNotice(
     id: string,
-    data: { title?: string; content?: string; fileUrl?: string | null },
+    data: { title?: string; content?: string; isImportant: boolean; fileUrl?: string | null },
 ): Promise<Notice | null> {
     try {
+        if (data.isImportant) {
+            const oldImportantNotice = await prisma.notice.findFirst({
+                where: {
+                    isImportant: true,
+                },
+            })
+
+            if (oldImportantNotice) {
+                await prisma.notice.update({
+                    where: { id: oldImportantNotice.id },
+                    data: { isImportant: false }
+                })
+            }
+        }
         const notice = await prisma.notice.update({
             where: { id },
             data,

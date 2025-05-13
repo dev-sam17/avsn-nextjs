@@ -14,16 +14,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
-import { Prisma } from "@/lib/prisma";
 import {
   getNotices,
   createNotice,
   deleteNotice,
   updateNotice,
 } from "@/lib/actions/notice";
-
-type Notice = Prisma.Notice;
-type NoticeFormBody = Omit<Notice, "id" | "createdAt">;
+import { Notice, NoticeFormBody } from "@/lib/types";
 
 export default function NoticeManagement() {
   const [notices, setNotices] = useState<Notice[]>([]);

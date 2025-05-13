@@ -47,12 +47,17 @@ export default async function Home() {
       createdAt: "desc",
     },
   });
+
+  const importantNotice = notices.filter((notice) => notice.isImportant);
+  const normalNotices = notices.filter((notice) => !notice.isImportant);
   return (
     <>
       <CarouselBody />
-      <MarqueeEffectDoubleExample />
+      {importantNotice.length > 0 && (
+        <MarqueeEffectDoubleExample content={importantNotice[0]} />
+      )}
       <div className="flex flex-col md:flex-row items-center bg-teal-50">
-        <NewsColumn notices={notices} />
+        <NewsColumn notices={normalNotices} />
         <MapLocation />
       </div>
       {/* <MessageBar /> */}

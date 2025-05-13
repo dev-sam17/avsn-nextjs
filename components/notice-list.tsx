@@ -155,6 +155,13 @@ export default function NoticeList({
                     <CardDescription className="flex items-center mt-1">
                       <Calendar className="h-3.5 w-3.5 mr-1 text-slate-400" />
                       Posted on {formatDate(notice.createdAt)}
+                      {notice.isImportant ? (
+                        <span className="font-semibold text-yellow-500">
+                          &nbsp;&nbsp;(Important)
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </CardDescription>
                   </div>
                   <DropdownMenu>

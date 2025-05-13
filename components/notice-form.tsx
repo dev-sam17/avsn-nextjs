@@ -21,6 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Checkbox } from "./ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Prisma } from "@/lib/prisma";
 
@@ -30,6 +31,7 @@ type Notice = Prisma.Notice;
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().min(1, "Content is required"),
+  isImportant: z.boolean(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -62,6 +64,7 @@ export default function NoticeForm({
     defaultValues: {
       title: notice?.title || "",
       content: notice?.content || "",
+      isImportant: notice?.isImportant || false,
     },
   });
 
@@ -199,6 +202,26 @@ export default function NoticeForm({
                   rows={5}
                 />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isImportant"
+          render={({ field }) => (
+            <FormItem className="flex flex-row gap-2 items-center space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  className="data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
+                />
+              </FormControl>
+              <FormLabel className="text-sm font-small">
+                Mark as Important
+              </FormLabel>
               <FormMessage />
             </FormItem>
           )}
