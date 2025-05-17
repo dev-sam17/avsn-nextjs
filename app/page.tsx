@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 
 const details = {
   openedIn: 2020,
-  students: 100,
-  faculty: 50,
+  students: 400,
+  faculty: 25,
 };
 
 export default async function Home() {
