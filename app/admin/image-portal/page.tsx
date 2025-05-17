@@ -2,9 +2,9 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { AppSidebar } from "@/components/app-sidebar";
-import { ImageManager } from "@/components/image-manager";
-import { ActivityUploadPanel } from "@/components/activity-upload-panel";
+import { AppSidebar } from "@/components/image-portal/app-sidebar";
+import { ImageManager } from "@/components/image-portal/image-manager";
+import { ActivityUploadPanel } from "@/components/image-portal/activity-upload-panel";
 import { Toaster } from "@/components/ui/toaster";
 import {
   ContentProvider,

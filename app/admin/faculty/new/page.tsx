@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import FacultyForm from "@/components/faculty-form";
+import FacultyForm from "@/components/faculty/faculty-form";
 
 export default function NewFacultyPage() {
   return (

@@ -14,7 +14,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 // import { LogoutButton } from "./auth/logout-button";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 // Sample data structure for the navigation

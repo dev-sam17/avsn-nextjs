@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { ArrowLeft, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FacultyList from "@/components/faculty-list";
+import FacultyList from "@/components/faculty/faculty-list";
 import { LogoutButton } from "@/components/auth/logout-button";
 
 export default async function Home() {

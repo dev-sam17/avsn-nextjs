@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageItem } from "@/components/message-item";
+import { MessageItem } from "@/components/message-center/message-item";
 import type { Message } from "@/lib/types";
 import {
   DropdownMenu,

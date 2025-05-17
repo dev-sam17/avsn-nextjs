@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import FacultyForm from "@/components/faculty-form";
+import FacultyForm from "@/components/faculty/faculty-form";
 import { getFaculty } from "@/lib/actions/faculty";
 
 export default async function EditFacultyPage(props: {

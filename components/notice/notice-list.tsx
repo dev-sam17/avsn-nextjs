@@ -35,7 +35,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
-import PdfPreview from "./pdf-preview";
+import PdfPreview from "@/components/pdf-preview";
 import { Prisma } from "@/lib/prisma";
 
 type Notice = Prisma.Notice;

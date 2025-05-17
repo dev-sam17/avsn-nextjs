@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MessageList } from "@/components/message-list";
+import { MessageList } from "@/components/message-center/message-list";
 import { fetchMessages } from "@/lib/actions/message";
 import type { Message } from "@/lib/types";
 import Link from "next/link";
-import { LogoutButton } from "./auth/logout-button";
+import { LogoutButton } from "@/components/auth/logout-button";
 
 export function MessageCenter() {
   const [messages, setMessages] = useState<Message[]>([]);

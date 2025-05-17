@@ -1,4 +1,4 @@
-import NoticeManagement from "@/components/notice-management";
+import NoticeManagement from "@/components/notice/notice-management";
 import Header from "@/components/header";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";

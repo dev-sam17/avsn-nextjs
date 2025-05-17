@@ -1,4 +1,4 @@
-import { MessageCenter } from "@/components/message-center";
+import { MessageCenter } from "@/components/message-center/message-center";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
