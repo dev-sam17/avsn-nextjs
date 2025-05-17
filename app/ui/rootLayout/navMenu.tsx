@@ -176,7 +176,7 @@ const SideDrawer = ({
       <Submenu data={courses} close={close} />
       <Submenu data={campus} close={close} />
       <Link
-        href="#"
+        href="/activities"
         onClick={() => close(false)}
         className="block py-2 text-white"
       >
